@@ -1,5 +1,5 @@
 # Download the Code
-# _guide_section1
+## _guide_section1
 Before you download the code, please note that the example code is **ONLY** test on Raspberry Pi OS. We provide two methods for download:
 
 **Method 1: Use git clone (Recommended)**
