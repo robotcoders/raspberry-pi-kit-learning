@@ -3,7 +3,8 @@ Scratch(for Pi 5 Pi 4)
 
     Scratch is a block-based visual programming language and online platform primarily designed to introduce coding concepts to children aged 8-16. It offers a user-friendly interface where projects can be created using blocks, making it accessible and engaging for young learners. Developed by the MIT Media Lab, Scratch has been translated into over 70 languages and enjoys widespread usage globally.
 
-
+.. _guide_section1:
+`查看指南 <../preparation/Download_the_Code.md>`
 
 .. note::
 
@@ -11,7 +12,8 @@ Scratch(for Pi 5 Pi 4)
 
     If you are a user who has just used Scratch 3, we recommend that you try the projects in order so that you can quickly get started with Scratch 3.
 	
-    Before attempting the projects, make sure you have downloaded the necessary materials and code files.'Download code to Raspberry Pi<../preparation/Download_the_Code.md>'
+    Before attempting the projects, make sure you have downloaded the necessary materials and code files.'查看指南<_guide_section1>'
+
 .. toctree::
     :maxdepth: 2
 
