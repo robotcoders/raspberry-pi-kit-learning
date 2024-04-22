@@ -13,9 +13,9 @@ includes installing the OS, Raspberry Pi network and how to open terminal.
 .. toctree::
     :maxdepth: 2
 
-    What Do We Need.md
-    Installing the OS (Common).md
-    Set up Your Raspberry Pi.md
+    What_Do_We_Need.md
+    Installing_the_OS_(Common).md
+    Set_up_Your_Raspberry_Pi.md
     Libraries.md
-    Download the Code.md
-    GPIO Extension Board.md
+    Download_the_Code.md
+    GPIO_Extension_Board.md
