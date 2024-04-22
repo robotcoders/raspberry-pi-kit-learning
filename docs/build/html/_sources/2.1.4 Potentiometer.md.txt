@@ -47,9 +47,9 @@ Potentiometer is a continuously adjustable resistor. When you adjust the shaft o
 
 ![](./img/image180.png)
 
-> [!NOTE]
->
-> Please place the chip by referring to the corresponding position depicted in the picture. Note that the grooves on the chip should be on the left when it is placed.
+<div class="warning" style="background-color: #E7F2FA; color=#6AB0DE; padding: 10px; border: 1px solid #333; border-radius: 5px;">
+    NOTE: Please place the chip by referring to the corresponding position depicted in the picture. Note that the grooves on the chip should be on the left when it is placed.
+</div>
 
 ## Code
 
@@ -57,7 +57,7 @@ Potentiometer is a continuously adjustable resistor. When you adjust the shaft o
 
 Go to the code folder compile and run.
 
-```
+```sh
 cd ~/super-starter-kit-for-raspberry-pi/c/2.1.4/
 g++ 2.1.4_Potentiometer.cpp -lwiringPi -lADCDevice
 sudo ./a.out
@@ -81,11 +81,7 @@ int main(void){
     adc = new ADCDevice();
     printf("Program is starting ... \n");
     
-    if(adc->detectI2C(0x4c)){    // Detect the pcf8591.
-        delete adc;                // Free previously pointed memory
-        adc = new PCF8591();    // If detected, create an instance of PCF8591.
-    }
-    else if(adc->detectI2C(0x48)){// Detect the ads7830
+    if(adc->detectI2C(0x48)){// Detect the ads7830
         delete adc;               // Free previously pointed memory
         adc = new ADS7830();      // If detected, create an instance of ADS7830.
     }
@@ -109,62 +105,20 @@ int main(void){
 
 ```
 
+### For  Python  Language User
 
+Go to the code folder and run.
 
-For Python Users
-
-Open the code file
-
-```
-cd ~/super-starter-kit-for-raspberry-pi/Python
-```
-
-Run
+```sh
 
 ```
-sudo python3 2.1.4_Potentiometer.py
-```
 
-After the code runs, rotate the knob on the potentiometer, the intensity of LED will change accordingly.
+
 
 This is the complete code
 
 ```python
-#!/usr/bin/env python3
 
-import RPi.GPIO as GPIO
-import time
-from ADCDevice import *
-
-ledPin = 11
-adc = ADCDevice() # Define an ADCDevice class object
-
-def setup():
-    global adc
-    if(adc.detectI2C(0x4d)): # Detect the pcf8591.
-        adc = PCF8591()
-    elif(adc.detectI2C(0x48)): # Detect the ads7830
-        adc = ADS7830()
-    else:
-        print("No correct I2C address found, \n"
-        "Please use command 'i2cdetect -y 1' to check the I2C address! \n"
-        "Program Exit. \n");
-        exit(-1)
-    global p
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(ledPin,GPIO.OUT)
-    p = GPIO.PWM(ledPin,1000)
-    p.start(0)
-        
-def loop():
-    while True:
-        value = adc.analogRead(0)    # read the ADC value of channel 0
-        p.ChangeDutyCycle(value*100/255)        # Mapping to PWM duty cycle
-        voltage = value / 255.0 * 3.3  # calculate the voltage value
-        print ('ADC Value : %d, Voltage : %.2f'%(value,voltage))
-        time.sleep(0.03)
 ```
-
-
 
 ## Phenomenon

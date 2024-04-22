@@ -16,7 +16,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -52,11 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#components">Components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connect">Connect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#code">Code</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#for-c-language">For C Language</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1"></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#code">Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#phenomenon">Phenomenon</a></li>
 </ul>
 </li>
@@ -109,8 +105,6 @@
 <section id="components">
 <h2>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h2>
 <p><img alt="" src="_images/list_rgb_led.png" /></p>
-<blockquote>
-<div><p>[!NOTE]</p>
 <p><strong>PWM</strong>
 Pulse Width Modulation, or PWM, is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off. This on-off pattern can simulate voltages in between full on (5 Volts) and off (0 Volts) by changing the portion of the time the signal spends on versus the time that the signal spends off. The duration of “on time” is called pulse width. To get varying analog values, you change, or modulate, that width. If you repeat this on-off pattern fast enough with some device, an LED for example, the result would be like this: the signal is a steady voltage between 0 and 5v controlling the brightness of the LED.</p>
 <p><strong>Duty Cycle</strong>
@@ -118,7 +112,6 @@ A duty cycle is the percentage of one period in which a signal is active. A peri
 <p><img alt="" src="_images/image56.png" /></p>
 <p>Where <strong>D</strong> is the duty cycle, <strong>T</strong> is the time the signal is active, and <strong>P</strong> is the total period of the signal. Thus, a 60% duty cycle means the signal is on 60% of the time but off 40% of the time. The “on time” for a 60% duty cycle could be a fraction of a second, a day, or even a week, depending on the length of the period.</p>
 <p><img alt="" src="_images/image57.jpeg" /></p>
-</div></blockquote>
 <p><strong>RGB LED</strong></p>
 <p><img alt="img58" src="_images/image58.png" /><img alt="img59" src="_images/image59.png" /></p>
 <p>The three primary colors of the RGB LED can be mixed into various colors by brightness. The brightness of LED can be adjusted with PWM. Raspberry Pi has only one channel for hardware PWM output, but it needs three channels to control the RGB LED, which means it is difficult to control the RGB LED with the hardware PWM of Raspberry Pi. Fortunately, the softPwm library simulates PWM (softPwm) by programming. You only need to include the header file softPwm.h (for C language users), and then call the API it provides to easily control the RGB LED by multi-channel PWM output, so as to display all kinds of color.</p>
@@ -131,22 +124,22 @@ A duty cycle is the percentage of one period in which a signal is active. A peri
 </section>
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h2>
-<section id="for-c-language">
-<h3>For C Language<a class="headerlink" href="#for-c-language" title="Link to this heading"></a></h3>
+<p><strong>For C Language Users</strong></p>
 <p>Go to the folder of the code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="nb">super</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">raspberry</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="mf">1.1.2</span><span class="o">/</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/super-starter-kit-for-raspberry-pi/c/1.1.2/
 </pre></div>
 </div>
 <p>Compile the code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="mf">1.1.2</span><span class="n">_rgbLed</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">lwiringPi</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span><span class="m">1</span>.1.2_rgbLed.c<span class="w"> </span>-lwiringPi
 </pre></div>
 </div>
 <blockquote>
-<div><p>[!NOTE]</p>
-<p>When the instruction “gcc” is executed, if “-o” is not called, then the executable file is named “a.out”.</p>
+<div><div class="warning" style="background-color: #E7F2FA; color=#6AB0DE; padding: 10px; border: 1px solid #333; border-radius: 5px;">
+    NOTE: When the instruction "gcc" is executed, if "-o" is not called, then the executable file is named "a.out".
+</div>
 </div></blockquote>
 <p>Run the executable file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">a</span><span class="o">.</span><span class="n">out</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./a.out
 </pre></div>
 </div>
 <p>After the code runs, you will see that RGB displays red, green, blue, yellow, pink, and cyan.</p>
@@ -203,10 +196,99 @@ A duty cycle is the percentage of one period in which a signal is active. A peri
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="id1">
-<h3><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-</section>
+<p><strong>For Python Language Users</strong></p>
+<p>Go to the code folder and run.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/super-starter-kit-for-raspberry-pi/python
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span><span class="m">1</span>.1.2_rgbLed.py
+</pre></div>
+</div>
+<p>After the code runs, you will see that RGB displays red, green, blue, yellow, pink, and cyan.</p>
+<p>This is the complete code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Set up a color table in Hexadecimal</span>
+<span class="n">COLOR</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0xFF0000</span><span class="p">,</span> <span class="mh">0x00FF00</span><span class="p">,</span> <span class="mh">0x0000FF</span><span class="p">,</span> <span class="mh">0xFFFF00</span><span class="p">,</span> <span class="mh">0xFF00FF</span><span class="p">,</span> <span class="mh">0x00FFFF</span><span class="p">]</span>
+<span class="c1"># Set pins&#39; channels with dictionary</span>
+<span class="n">pins</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Red&#39;</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">:</span><span class="mi">27</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+	<span class="k">global</span> <span class="n">p_R</span><span class="p">,</span> <span class="n">p_G</span><span class="p">,</span> <span class="n">p_B</span>
+	<span class="c1"># Set the GPIO modes to BCM Numbering</span>
+	<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+	<span class="c1"># Set all LedPin&#39;s mode to output and initial level to High(3.3v)</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">:</span>
+		<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">GPIO</span><span class="o">.</span><span class="n">HIGH</span><span class="p">)</span>
+
+	<span class="c1"># Set all led as pwm channel and frequece to 2KHz</span>
+	<span class="n">p_R</span> <span class="o">=</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">],</span> <span class="mi">2000</span><span class="p">)</span>
+	<span class="n">p_G</span> <span class="o">=</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">],</span> <span class="mi">2000</span><span class="p">)</span>
+	<span class="n">p_B</span> <span class="o">=</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="s1">&#39;Blue&#39;</span><span class="p">],</span> <span class="mi">2000</span><span class="p">)</span>
+
+	<span class="c1"># Set all begin with value 0</span>
+	<span class="n">p_R</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">p_G</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">p_B</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Define a MAP function for mapping values.  Like from 0~255 to 0~100</span>
+<span class="k">def</span> <span class="nf">MAP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_min</span>
+
+<span class="c1"># Define a function to set up colors </span>
+<span class="c1"># input color should be Hexadecimal with </span>
+<span class="c1"># red value, blue value, green value.</span>
+<span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+ <span class="c1"># configures the three LEDs&#39; luminance with the inputted color value . </span>
+	<span class="c1"># Devide colors from &#39;color&#39; veriable</span>
+	<span class="n">R_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>
+	<span class="n">G_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0x00FF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+	<span class="n">B_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0x0000FF</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span>
+ <span class="c1"># these three lines are used for analyzing the col variables </span>
+ <span class="c1"># assign the first two values of the hexadecimal to R, the middle two assigned to G</span>
+ <span class="c1"># assign the last two values to B, please refer to the shift operation of the hexadecimal for details.</span>
+
+	<span class="c1"># Map color value from 0~255 to 0~100</span>
+	<span class="n">R_val</span> <span class="o">=</span> <span class="n">MAP</span><span class="p">(</span><span class="n">R_val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="n">G_val</span> <span class="o">=</span> <span class="n">MAP</span><span class="p">(</span><span class="n">G_val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="n">B_val</span> <span class="o">=</span> <span class="n">MAP</span><span class="p">(</span><span class="n">B_val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+	
+	<span class="c1"># Change the colors</span>
+	<span class="n">p_R</span><span class="o">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">R_val</span><span class="p">)</span>
+	<span class="c1"># Assign the mapped duty cycle value to the corresponding PWM channel to change the luminance. </span>
+	<span class="n">p_G</span><span class="o">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">G_val</span><span class="p">)</span>
+	<span class="n">p_B</span><span class="o">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">B_val</span><span class="p">)</span>
+
+	<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;color_msg: R_val = </span><span class="si">%s</span><span class="s2">,	G_val = </span><span class="si">%s</span><span class="s2">,	B_val = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">R_val</span><span class="p">,</span> <span class="n">G_val</span><span class="p">,</span> <span class="n">B_val</span><span class="p">))</span>	 
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+		<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">COLOR</span><span class="p">:</span><span class="c1"># Assign every item in the COLOR list to the color respectively and change the color of the RGB LED via the setColor() function.</span>
+			<span class="n">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="c1"># change the color of the RGB LED</span>
+			<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="c1"># set delay for 0.5s after each color changing. Modify this parameter will changed the LED&#39;s color changing rate.   </span>
+
+<span class="k">def</span> <span class="nf">destroy</span><span class="p">():</span>
+	<span class="c1"># Stop all pwm channel</span>
+	<span class="n">p_R</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+	<span class="n">p_G</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+	<span class="n">p_B</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+	<span class="c1"># Release resource</span>
+	<span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+
+<span class="c1"># If run this script directly, do:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+	<span class="n">setup</span><span class="p">()</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">main</span><span class="p">()</span>
+	<span class="c1"># When &#39;Ctrl+C&#39; is pressed, the program </span>
+	<span class="c1"># destroy() will be  executed.</span>
+	<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+		<span class="n">destroy</span><span class="p">()</span>
+
+</pre></div>
+</div>
 </section>
 <section id="phenomenon">
 <h2>Phenomenon<a class="headerlink" href="#phenomenon" title="Link to this heading"></a></h2>

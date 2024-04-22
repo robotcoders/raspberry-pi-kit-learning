@@ -16,7 +16,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -59,6 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#connect">Connect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#code">Code</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#for-c-language">For  C  Language</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-python-language-user">For  Python  Language User</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#phenomenon">Phenomenon</a></li>
@@ -146,11 +147,7 @@
 <span class="w">    </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADCDevice</span><span class="p">();</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Program is starting ... </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="w">    </span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x4d</span><span class="p">)){</span><span class="w">    </span><span class="c1">// Detect the pcf8591.</span>
-<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">adc</span><span class="p">;</span><span class="w">              </span><span class="c1">// Free previously pointed memory</span>
-<span class="w">        </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PCF8591</span><span class="p">();</span><span class="w">     </span><span class="c1">// If detected, create an instance of PCF8591.</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)){</span><span class="c1">// Detect the ads7830</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)){</span><span class="c1">// Detect the ads7830</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">adc</span><span class="p">;</span><span class="w">               </span><span class="c1">// Free previously pointed memory</span>
 <span class="w">        </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADS7830</span><span class="p">();</span><span class="w">      </span><span class="c1">// If detected, create an instance of ADS7830.</span>
 <span class="w">    </span><span class="p">}</span>
@@ -173,10 +170,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Python</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-
-<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+</section>
+<section id="for-python-language-user">
+<h3>For  Python  Language User<a class="headerlink" href="#for-python-language-user" title="Link to this heading"></a></h3>
+<p>Go to the code folder and run.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/super-starter-kit-for-raspberry-pi/python
+python<span class="w"> </span><span class="m">2</span>.2.1_Photoresistor.py
+</pre></div>
+</div>
+<p>This is the complete code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">ADCDevice</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -185,9 +188,7 @@
 
 <span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">adc</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x4d</span><span class="p">)):</span> <span class="c1"># Detect the pcf8591.</span>
-        <span class="n">adc</span> <span class="o">=</span> <span class="n">PCF8591</span><span class="p">()</span>
-    <span class="k">elif</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)):</span> <span class="c1"># Detect the ads7830</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)):</span> <span class="c1"># Detect the ads7830</span>
         <span class="n">adc</span> <span class="o">=</span> <span class="n">ADS7830</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No correct I2C address found, </span><span class="se">\n</span><span class="s2">&quot;</span>

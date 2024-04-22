@@ -16,7 +16,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -57,6 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#connect">Connect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#code">Code</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#for-c-language">For  C  Language</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-python-language-user">For  Python  Language User</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#phenomenon">Phenomenon</a></li>
@@ -130,19 +131,18 @@
 <h2>Connect<a class="headerlink" href="#connect" title="Link to this heading"></a></h2>
 <p><img alt="" src="_images/image312.png" /></p>
 <p><img alt="" src="_images/image180.png" /></p>
-<blockquote>
-<div><p>[!NOTE]</p>
-<p>Please place the chip by referring to the corresponding position depicted in the picture. Note that the grooves on the chip should be on the left when it is placed.</p>
-</div></blockquote>
+<div class="warning" style="background-color: #E7F2FA; color=#6AB0DE; padding: 10px; border: 1px solid #333; border-radius: 5px;">
+    NOTE: Please place the chip by referring to the corresponding position depicted in the picture. Note that the grooves on the chip should be on the left when it is placed.
+</div>
 </section>
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h2>
 <section id="for-c-language">
 <h3>For  C  Language<a class="headerlink" href="#for-c-language" title="Link to this heading"></a></h3>
 <p>Go to the code folder compile and run.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="nb">super</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">raspberry</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="mf">2.1.4</span><span class="o">/</span>
-<span class="n">g</span><span class="o">++</span> <span class="mf">2.1.4</span><span class="n">_Potentiometer</span><span class="o">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">lwiringPi</span> <span class="o">-</span><span class="n">lADCDevice</span>
-<span class="n">sudo</span> <span class="o">./</span><span class="n">a</span><span class="o">.</span><span class="n">out</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/super-starter-kit-for-raspberry-pi/c/2.1.4/
+g++<span class="w"> </span><span class="m">2</span>.1.4_Potentiometer.cpp<span class="w"> </span>-lwiringPi<span class="w"> </span>-lADCDevice
+sudo<span class="w"> </span>./a.out
 </pre></div>
 </div>
 <p>After the code runs, rotate the knob on the potentiometer, the intensity of LED will change accordingly.</p>
@@ -160,11 +160,7 @@
 <span class="w">    </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">ADCDevice</span><span class="p">();</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Program is starting ... </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="w">    </span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x4c</span><span class="p">)){</span><span class="w">    </span><span class="c1">// Detect the pcf8591.</span>
-<span class="w">        </span><span class="n">delete</span><span class="w"> </span><span class="n">adc</span><span class="p">;</span><span class="w">                </span><span class="c1">// Free previously pointed memory</span>
-<span class="w">        </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">PCF8591</span><span class="p">();</span><span class="w">    </span><span class="c1">// If detected, create an instance of PCF8591.</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)){</span><span class="c1">// Detect the ads7830</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">-&gt;</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)){</span><span class="c1">// Detect the ads7830</span>
 <span class="w">        </span><span class="n">delete</span><span class="w"> </span><span class="n">adc</span><span class="p">;</span><span class="w">               </span><span class="c1">// Free previously pointed memory</span>
 <span class="w">        </span><span class="n">adc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">ADS7830</span><span class="p">();</span><span class="w">      </span><span class="c1">// If detected, create an instance of ADS7830.</span>
 <span class="w">    </span><span class="p">}</span>
@@ -188,50 +184,15 @@
 
 </pre></div>
 </div>
-<p>For Python Users</p>
-<p>Open the code file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="nb">super</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">raspberry</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="n">Python</span>
+</section>
+<section id="for-python-language-user">
+<h3>For  Python  Language User<a class="headerlink" href="#for-python-language-user" title="Link to this heading"></a></h3>
+<p>Go to the code folder and run.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<p>Run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python3</span> <span class="mf">2.1.4</span><span class="n">_Potentiometer</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>After the code runs, rotate the knob on the potentiometer, the intensity of LED will change accordingly.</p>
 <p>This is the complete code</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-
-<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">ADCDevice</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">ledPin</span> <span class="o">=</span> <span class="mi">11</span>
-<span class="n">adc</span> <span class="o">=</span> <span class="n">ADCDevice</span><span class="p">()</span> <span class="c1"># Define an ADCDevice class object</span>
-
-<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">adc</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x4d</span><span class="p">)):</span> <span class="c1"># Detect the pcf8591.</span>
-        <span class="n">adc</span> <span class="o">=</span> <span class="n">PCF8591</span><span class="p">()</span>
-    <span class="k">elif</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">detectI2C</span><span class="p">(</span><span class="mh">0x48</span><span class="p">)):</span> <span class="c1"># Detect the ads7830</span>
-        <span class="n">adc</span> <span class="o">=</span> <span class="n">ADS7830</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No correct I2C address found, </span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;Please use command &#39;i2cdetect -y 1&#39; to check the I2C address! </span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;Program Exit. </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
-        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">global</span> <span class="n">p</span>
-    <span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BOARD</span><span class="p">)</span>
-    <span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        
-<span class="k">def</span> <span class="nf">loop</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">analogRead</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># read the ADC value of channel 0</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">value</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>        <span class="c1"># Mapping to PWM duty cycle</span>
-        <span class="n">voltage</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">255.0</span> <span class="o">*</span> <span class="mf">3.3</span>  <span class="c1"># calculate the voltage value</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;ADC Value : </span><span class="si">%d</span><span class="s1">, Voltage : </span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">voltage</span><span class="p">))</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.03</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </section>

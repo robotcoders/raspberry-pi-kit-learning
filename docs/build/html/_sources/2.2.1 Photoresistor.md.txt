@@ -55,11 +55,7 @@ int main(void){
     adc = new ADCDevice();
     printf("Program is starting ... \n");
     
-    if(adc->detectI2C(0x4d)){    // Detect the pcf8591.
-        delete adc;              // Free previously pointed memory
-        adc = new PCF8591();     // If detected, create an instance of PCF8591.
-    }
-    else if(adc->detectI2C(0x48)){// Detect the ads7830
+    if(adc->detectI2C(0x48)){// Detect the ads7830
         delete adc;               // Free previously pointed memory
         adc = new ADS7830();      // If detected, create an instance of ADS7830.
     }
@@ -80,11 +76,20 @@ int main(void){
     }
     return 0;
 }
-```
-Python
-```python
-#!/usr/bin/env python3
 
+```
+### For  Python  Language User
+
+Go to the code folder and run.
+
+```sh
+cd ~/super-starter-kit-for-raspberry-pi/python
+python 2.2.1_Photoresistor.py
+```
+
+This is the complete code
+
+```python
 import RPi.GPIO as GPIO
 import time
 from ADCDevice import *
@@ -94,9 +99,7 @@ adc = ADCDevice() # Define an ADCDevice class object
 
 def setup():
     global adc
-    if(adc.detectI2C(0x4d)): # Detect the pcf8591.
-        adc = PCF8591()
-    elif(adc.detectI2C(0x48)): # Detect the ads7830
+    if(adc.detectI2C(0x48)): # Detect the ads7830
         adc = ADS7830()
     else:
         print("No correct I2C address found, \n"
@@ -132,7 +135,5 @@ if __name__ == '__main__':   # Program entrance
     except KeyboardInterrupt:  # Press ctrl-c to end the program.
         destroy()
 ```
-
-
 
 ## Phenomenon
