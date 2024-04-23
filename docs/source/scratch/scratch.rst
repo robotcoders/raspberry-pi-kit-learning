@@ -7,7 +7,7 @@ Scratch(for Pi 5 Pi 4)
 
 .. note::
 
-    In this tutorial, you'll discover how to leverage Scratch 3 on Raspberry Pi, a unique capability that enables users to interact with Raspberry Pi GPIO. This functionality sets it apart from the online version of Scratch, offering an exciting opportunity to explore physical computing and expand coding possibilities.
+    Here you will learn to use Scratch 3 in Raspberry Pi and access Raspberry Pi GPIO with Scratch 3, which is not possible with online Scratch.
 
     If you are a user who has just used Scratch 3, we recommend that you try the projects in order so that you can quickly get started with Scratch 3.
 	
