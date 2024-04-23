@@ -12,7 +12,6 @@ Scratch(for Pi 5 Pi 4)
     If you are a user who has just used Scratch 3, we recommend that you try the projects in order so that you can quickly get started with Scratch 3.
 	
     Before attempting the projects, make sure you have downloaded the necessary materials and code files.
-    Before trying the projects, you should have downloaded the relevant materials and code files.
     Open a Terminal and enter the following command to download them from github.
 
     .. code-block::
