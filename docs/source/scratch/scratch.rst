@@ -14,7 +14,9 @@ Scratch(for Pi 5 Pi 4)
     Before attempting the projects, make sure you have downloaded the necessary materials and code files.
 This is a paragraph with the word `test`_.
 
-.. _test: :doc:`../preparation/Download_the_Code.md`
+
+.. include:: ../preparation/Download_the_Code.md
+
 
 
 .. toctree::
