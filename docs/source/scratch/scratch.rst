@@ -11,8 +11,11 @@ Scratch(for Pi 5 Pi 4)
 
     If you are a user who has just used Scratch 3, we recommend that you try the projects in order so that you can quickly get started with Scratch 3.
 	
-    Before attempting the projects, make sure you have downloaded the necessary materials and code files. 
-..TEST: :doc:'Download_the_Code.md'
+    Before attempting the projects, make sure you have downloaded the necessary materials and code files.
+This is a paragraph with the word `test`_.
+
+.. _test: :doc:`Download_the_Code.md`
+
 
 .. toctree::
     :maxdepth: 2
