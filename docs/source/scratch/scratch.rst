@@ -13,7 +13,7 @@ Scratch(for Pi 5 Pi 4)
 	
     Before attempting the projects, make sure you have downloaded the necessary materials and code files.
     .. code-block:: ssh
-    git clone https://github.com/sunfounder/davinci-kit-for-raspberry-pi.git
+    	git clone https://github.com/sunfounder/davinci-kit-for-raspberry-pi.git
 
 
 
